@@ -1,88 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset = "UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <title>Restaurant</title>
-        <style>
-        .products-container{
-            max-width:650px;
-            justify-content:space-around;
-            margin:0 auto;
-            margin-top:50px;
-        }
-        .product-header{
-            width:100%;
-            max-width:650px;
-            display:flex;
-            justify-content:flex-start;
-            border-bottom:4px solid lightgrey;
-            margin:0 auto;
-        }
-        .product-title{
-            width:45%;
-
-        }
-        .price{
-            width:15%;
-            display:flex;
-            align-items:center;
-        }
-        .quantity{
-            width:30%;
-            display:flex;
-            align-items:center;
-        }
-        .total{
-            width:10%;
-            
-            display:flex;
-            align-items:center;
-        }
-        .product{
-            width:45%;
-            display:flex;
-            justify-content:space-around;
-            align-items:center;
-            padding:10px 0;
-            
-        }
-        .products {
-            width:100%;
-            display: flex;
-            flex-wrap: wrap;
-        }
-        .basketTotalContainer{
-            display: flex;
-            justify-content: flex-end;
-            width:100%;
-            padding: 10px 0;
-        }
-        .basketTotalTitle{
-            width:30%;
-        }
-        .TotalPrice{
-            width:10%;
-        }
-        
-         
-        </style>
-    </head>
-    <body>
-       <main>
-        <div class="products-container">
+<app-header></app-header>
+<!-- <div class="empty" *ngIf = "items.length > 1">
+    <div class="info">
+        <h4>You Don't have any items in your cart.</h4>
+        <a routerLink = "../home" class="btn btn-success">Start Shopping</a>
+    </div> -->
+    <!-- {{items | json}} -->
+    <!-- <div *ngIf="items.length > 0" > -->
+    <!-- <div class="col-sm-3" *ngFor="let meals of items">
+        <h3>{{meals.name}}</h3>
+        <h3>{{meals.price}}</h3>
+    </div> -->
+    <!-- </div> -->
+    <div class="products-container">
         <div class="product-header">
         <h5 class="product-title">Meals</h5>
         <h5 class="price">Price</h5>
         <h5 class= "quantity">Quantity</h5>
         <h5 class="total">Total</h5>
         </div>
-        <div class="products">
-        
         </div>
+    
+    <div *ngIf="items.length > 0" >
+        <div class="cart" *ngFor = "let item of items; let i = index">
+            <i class = "fa fa-trash" aria-hidden="true" (click)="onDelete(i)"></i>
+            <div class="name">
+               <h3>{{item.name}}</h3>
+                </div>
+                <div class="price">
+                    {{item.price | currency}}
+                </div>
+                <input type = "number" class="qty" [value] = "item.qty"
+                (blur)="validateInput($event,i)">
+                <div class="subtotal">
+                    {{item.price * item.qty | currency}}
+
+                </div>
+               
         </div>
-        </main>
-        </body>
-        </html>
+        <div class="checkout">
+            <div>Total</div>
+            <b>{{total | currency}}</b>
+            <button class="btn btn-success" (click)="onCheckout()">Checkout</button>
+        </div>
+    </div>

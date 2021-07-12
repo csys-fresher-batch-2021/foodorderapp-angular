@@ -15,18 +15,20 @@ export class LoginComponent implements OnInit {
   password:any
   Registerservice:any
   ngOnInit(): void {
-    this.Registerservice = this.service.registerDetails;
+    
   }
 
 
 
   submit(){
-    console.log
-    if(this.Registerservice.username==this.username && this.Registerservice.password==this.password){
-      this.route.navigate(["/home"])
-    }else{
-      console.log(false)
-    }
+    
+    this.service.login(this.username,this.password).then((res)=>{
+      localStorage.setItem("LOGGED_IN_USER", JSON.stringify(res));
+      this.route.navigate(["/home"]);;
+    }).catch(err=>{
+      console.error(err);
+      alert(err.message);
+    });
    
   }
 

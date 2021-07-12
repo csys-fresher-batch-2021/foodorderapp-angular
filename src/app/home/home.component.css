@@ -1,0 +1,24 @@
+.container .input {
+  border: 0;
+  outline: none;
+  color: #8b7d77;
+}
+.search_wrap {
+  width: 500px;
+  margin: 30px auto;
+}
+
+.search_wrap .search_box {
+  position: relative;
+  width: 500px;
+  height: 60px;
+}
+
+.search_wrap .search_box .input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 10px 20px;
+}
