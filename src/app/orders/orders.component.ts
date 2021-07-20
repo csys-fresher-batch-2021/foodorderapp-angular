@@ -11,7 +11,13 @@ export class OrdersComponent implements OnInit {
   constructor(private cartService:CartService) { }
 
   ngOnInit(): void {
-    this.items= this.cartService.getCartData();
-  }
+    // this.cartService.getOrdersById().subscribe( (res:any) =>{
+    //   this.items = res;
+    // console.log(JSON.stringify(this.items));
+    // });
+   }
+   cancel(){
+
+   }
 
 }

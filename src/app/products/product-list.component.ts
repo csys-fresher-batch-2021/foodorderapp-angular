@@ -9,7 +9,7 @@ import { CartService } from '../cart.service';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-products:Product[] = [];
+  products:Product[] =[];
   constructor(private productService:ProductService,  private cartService: CartService) { }
 
   name = "";
@@ -17,17 +17,20 @@ products:Product[] = [];
   searchProducts: Product[] = [];
 
   ngOnInit(): void {
-    this.products = this.productService.getProducts();
+    this.productService.getProducts().subscribe( (res:any) =>{
+      this.products = res;
     console.log(JSON.stringify(this.products));
     this.searchProducts = this.products;
+    });
   } 
   addToCart(product:Product){
+    console.log(product)
     this.cartService.addItem(product)
  
   }
   Search(){
     alert(this.name);
-    this.searchProducts = this.products.filter(res=>  res.name.toLocaleLowerCase().includes(this.name.toLocaleLowerCase()));
+    this.searchProducts = this.products.filter((res:any)=>  res.name.toLocaleLowerCase().includes(this.name.toLocaleLowerCase()));
     
   } 
 }

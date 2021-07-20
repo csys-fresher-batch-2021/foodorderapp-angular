@@ -1,0 +1,33 @@
+.products-container {
+    max-width: 650px;
+    justify-content: space-around;
+    margin: 0 auto;
+    margin-top: 50px;
+  }
+  .header {
+    width: 104%;
+    max-width: 650px;
+    display: flex;
+    justify-content: flex-start;
+    border-bottom: 4px solid lightgrey;
+    margin: 0 auto;
+  }
+  .products {
+    width: 45%;
+  }
+  .line{
+      margin-left: 26%;
+      display: flex;
+      justify-content: flex-start;
+  }
+  .total{
+      margin-right: 10%;
+  }
+ 
+ 
+  .cart{
+      margin-right: 2%;
+  }
+  .name{
+      margin-left: 26%;
+  }

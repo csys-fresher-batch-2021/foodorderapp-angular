@@ -1,6 +1,18 @@
-<div class="cart" *ngFor = "let item of items; let i = index">
+<div class="products-container">
+<div class="header">
+<h5 class="products">Meals</h5>
+<h5 class= "quantity">Quantity</h5>
 
-<h2>
+</div>
+</div>
+<div class="cart" *ngFor = "let item of items; let i = index">
+   
+    
+<h2 class="name">
 {{item.name}}
 </h2>
+</div><br>
+<div class="line">
+    <button class="btn btn-success" (click)="cancel()">cancel the order</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <h4 class="total">Total:</h4>
 </div>

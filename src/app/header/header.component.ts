@@ -12,9 +12,9 @@ itemInCart:number=0;
   constructor(private cartService:CartService) { }
 
   ngOnInit(): void {
-    this.cartService.cartItems.subscribe(d=>{
-      this.itemInCart = d.length;
-    })
+     this.cartService.cartItems.subscribe(d=>{
+       this.itemInCart = d.length;
+     })
   }
 
 }

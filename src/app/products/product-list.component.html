@@ -9,11 +9,11 @@
     <!-- {{searchProducts | json}} -->
     <div class="col-sm-3" *ngFor="let product of searchProducts" style="display: flex; justify-content: space-around;">
         <div class="card">
-            <img [src]="product.imageUrls[0]" alt="" height="200">
-            <a [routerLink]="['/products',product.id]"><h3 class="card-title text-center">
+            <img [src]="product.imageUrl" alt="" height="200">
+               <h3 class="card-title text-center">
                 {{product.name}} &nbsp; &nbsp; ${{product.price}}
             </h3>
-        </a>
+     
            <button class="btn btn-info" style="background-color: #a73030;" (click)="addToCart(product)">Add to cart</button>
         </div>
     </div>
