@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { RegisterService } from '../register.service'
+import { RegisterService } from '../services/register.service'
 
 @Component({
   selector: 'app-login',
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
       this.logindetails = res;
       localStorage.setItem("LOGGED_IN_USER", JSON.stringify(user));
       
-      console.log(user)
+      console.log(user._id)
       if(user.role ==="admin"){
         this.route.navigateByUrl('home')
       }else{

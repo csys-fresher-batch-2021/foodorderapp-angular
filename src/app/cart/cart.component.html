@@ -4,42 +4,41 @@
         <h4>You Don't have any items in your cart.</h4>
         <a routerLink = "../home" class="btn btn-success">Start Shopping</a>
     </div> -->
-    <!-- {{items | json}} -->
-    <!-- <div *ngIf="items.length > 0" > -->
-    <!-- <div class="col-sm-3" *ngFor="let meals of items">
+<!-- {{items | json}} -->
+<!-- <div *ngIf="items.length > 0" > -->
+<!-- <div class="col-sm-3" *ngFor="let meals of items">
         <h3>{{meals.name}}</h3>
         <h3>{{meals.price}}</h3>
     </div> -->
-    <!-- </div> -->
-    <div class="products-container">
-        <div class="product-header">
+<!-- </div> -->
+<div class="products-container">
+    <div class="product-header">
         <h5 class="product-title">Meals</h5>
         <h5 class="price">Price</h5>
-        <h5 class= "quantity">Quantity</h5>
+        <h5 class="quantity">Quantity</h5>
         <h5 class="total">Total</h5>
-        </div>
-        </div>
-    
-    <div *ngIf="items.length > 0" >
-        <div class="cart" *ngFor = "let item of items; let i = index">
-            <i class = "fa fa-trash" aria-hidden="true" (click)="onDelete(i)"></i>
-            <div class="name">
-               <h3>{{item.name}}</h3>
-                </div>
-                <div class="price">
-                    {{item.price | currency}}
-                </div>
-                <input type = "number" class="qty" [value] = "item.qty"
-                (blur)="validateInput($event,i)">
-                <div class="subtotal">
-                    {{item.price * item.qty | currency}}
-
-                </div>
-               
-        </div>
-        <div class="checkout">
-            <div>Total</div>
-            <b>{{total | currency}}</b>
-            <button class="btn btn-success" (click)="addOrder()">Order</button>
-        </div>
     </div>
+</div>
+
+<div *ngIf="items.length > 0">
+    <div class="cart" *ngFor="let item of items; let i = index">
+        <i class="fa fa-trash" aria-hidden="true" (click)="onDelete(i)"></i>
+        <div class="name">
+            <h3>{{item.name}}</h3>
+        </div>
+        <div class="price">
+            {{item.price | currency}}
+        </div>
+        <input type="number" class="qty" [value]="item.qty" (blur)="validateInput($event,i)">
+        <div class="subtotal">
+            {{item.price * item.qty | currency}}
+
+        </div>
+
+    </div>
+    <div class="checkout">
+        <div>Total</div>
+        <b>{{total | currency}}</b>
+        <button class="btn btn-success" (click)="addOrder()">Order</button>
+    </div>
+</div>

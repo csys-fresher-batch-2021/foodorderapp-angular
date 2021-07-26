@@ -1,5 +1,12 @@
-export class Product {
-    constructor( public _id :number, public name:string,  public price:number,
-        public qty:number,
-         public imageUrl:string){}
+import { ArrayType } from '@angular/compiler/src/output/output_ast';
+
+export interface Product {
+    _id:number;
+    name:string;
+    price:number;
+    qty:number;
+    imageUrl:string;
+    total:number;
+    userId:string;
+    orderitems:any;
 }

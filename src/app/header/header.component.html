@@ -1,56 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset = "UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <title>Restaurant</title>
-    </head>
-    <body>
 
-        <!-- header and nav -->
-       
-        <header>
-            <nav>
-        <table id="header" border="0" width="100%" cellpadding="0" cellspacing="0" style="background-color: #a73030;">
-          <tr>
-              <td style="padding: 1%;">
-                  <table border="0" width="70%" cellpadding="15" cellspacing="0" align="center">
-                      <tr>
-                          <td>
-                              <font face ="arial" color= "#00000" size="5">
-                                  Restaurant
-                              </font>
-                          </td>
-                          <td>
-                              &nbsp;
-                          </td>
-                          <td>
-                            <a routerLink="../home"> <font face="arial" color="#ffffff" size="4">Home</font></a>
-                          </td>
-                          <td>
-                            <a href=""><font face="arial" color="#ffffff" size="4">About</font></a>
-                        </td>
-                        <td>
-                            <a href=""><font face="arial" color="#ffffff" size="4">Contact</font></a>
-                        </td>
-                        <td>
-                            <a routerLink="../cart"><font face="arial" color="#ffffff" size="4" class="cart">Cart &nbsp;<span>{{itemInCart}}</span></font></a>
-                        </td>
-                        <td>
-                            <a href=""><font face="arial" color="#ffffff" size="4" class="orders">My Orders &nbsp;</font></a>
-                        </td>
-                        <td>
-                            <a routerLink = "../login"><font face="arial" color="#ffffff" size="4">Logout</font></a>
-                        </td>
-                      </tr>
-                  </table>
-              </td>
-          </tr>
-        </table>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Restaurant</title>
+</head>
+
+<body>
+
+    <!-- header and nav -->
+
+    <header>
+        <nav>
+            <table id="header" border="0" width="100%" cellpadding="0" cellspacing="0" style="background-color: #a73030;">
+                <tr>
+                    <td style="padding: 1%;">
+                        <table border="0" width="70%" cellpadding="15" cellspacing="0" align="center">
+                            <tr>
+                                <td>
+                                    <font face="arial" color="#00000" size="5">
+                                        Restaurant
+                                    </font>
+                                </td>
+                                <td>
+                                    &nbsp;
+                                </td>
+                                <td>
+                                    <a routerLink="../home">
+                                        <font face="arial" color="#ffffff" size="4">Home</font>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="">
+                                        <font face="arial" color="#ffffff" size="4">About</font>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="">
+                                        <font face="arial" color="#ffffff" size="4">Contact</font>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a routerLink="../cart">
+                                        <font face="arial" color="#ffffff" size="4" class="cart">Cart &nbsp;
+                                            <span>{{itemInCart}}</span>
+                                        </font>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="">
+                                        <font face="arial" color="#ffffff" size="4" class="orders">My Orders &nbsp;</font>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a routerLink="../login">
+                                        <font face="arial" color="#ffffff" size="4">Logout</font>
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
         </nav>
     </header>
-
-
-

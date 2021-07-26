@@ -1,18 +1,31 @@
-<div class="products-container">
-<div class="header">
-<h5 class="products">Meals</h5>
-<h5 class= "quantity">Quantity</h5>
+<h1 class="display-4">My Orders</h1>
 
-</div>
-</div>
-<div class="cart" *ngFor = "let item of items; let i = index">
-   
-    
-<h2 class="name">
-{{item.name}}
-</h2>
-</div><br>
-<div class="line">
-    <button class="btn btn-success" (click)="cancel()">cancel the order</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <h4 class="total">Total:</h4>
-</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Items</th>
+            <th>Total</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let order of orders;let i =index">
+            <td>{{i+1}}</td>
+            <td>
+                <ul>
+                    <li *ngFor="let item of order.orderitems">
+                        {{item.name}} - {{item.qty}} Qty
+                    </li>
+                </ul>
+            </td>
+
+            <td>Rs.{{order.total}}</td>
+            <td>{{order.status}}</td>
+            <td>
+                <button type="submit" class="btn btn-danger" *ngIf="order.status=='ORDERED'">cancel the order</button>
+
+            </td>
+        </tr>
+    </tbody>
+</table>

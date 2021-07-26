@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../product.model';
-import { ProductService } from '../product.service';
-import { CartService } from '../cart.service';
+import { ProductService } from '../services/product.service';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-product-list',
@@ -9,28 +9,28 @@ import { CartService } from '../cart.service';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-  products:Product[] =[];
-  constructor(private productService:ProductService,  private cartService: CartService) { }
+  products: Product[] = [];
+  constructor(private productService: ProductService, private cartService: CartService) { }
 
   name = "";
 
   searchProducts: Product[] = [];
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe( (res:any) =>{
+    this.productService.getProducts().subscribe((res: any) => {
       this.products = res;
-    console.log(JSON.stringify(this.products));
-    this.searchProducts = this.products;
+      console.log(JSON.stringify(this.products));
+      this.searchProducts = this.products;
     });
-  } 
-  addToCart(product:Product){
+  }
+  addToCart(product: Product) {
     console.log(product)
     this.cartService.addItem(product)
- 
+
   }
-  Search(){
+  Search() {
     alert(this.name);
-    this.searchProducts = this.products.filter((res:any)=>  res.name.toLocaleLowerCase().includes(this.name.toLocaleLowerCase()));
-    
-  } 
+    this.searchProducts = this.products.filter((res: any) => res.name.toLocaleLowerCase().includes(this.name.toLocaleLowerCase()));
+
+  }
 }

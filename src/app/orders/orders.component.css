@@ -20,14 +20,17 @@
       display: flex;
       justify-content: flex-start;
   }
-  .total{
-      margin-right: 10%;
-  }
  
  
   .cart{
       margin-right: 2%;
+      justify-content: space-around;
   }
   .name{
       margin-left: 26%;
+      justify-content: space-around;
   }
+
+.quantity{
+    margin-right: 26%;
+}
