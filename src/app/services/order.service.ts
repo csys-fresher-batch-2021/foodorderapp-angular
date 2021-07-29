@@ -11,15 +11,23 @@ export class OrderService {
   API_URL = environment.API_URL;
   constructor(private http: HttpClient) { }
 
-  getOrdersById(id: number) {
-    let url = `${this.API_URL}/v1/orders/search?userId=${id}`
+  getOrdersById(id: any) {
+    console.log(id)
+    let url = `${this.API_URL}/v1/orders/search?userId=${id}`;
+    console.log(url)
     return this.http.get(url);
+    
   }
   getAllOrders() {
     let url = `${this.API_URL}/v1/orders`
     return this.http.get(url);
   }
-
+  
+ updateMyOrders(id:any){
+   console.log(id)
+  let url = `${this.API_URL}/v1/orders/${id}` ;
+  return this.http.put(url, id);
+ }
 
 
 

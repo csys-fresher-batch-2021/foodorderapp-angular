@@ -20,7 +20,9 @@ export class ProductListComponent implements OnInit {
     this.productService.getProducts().subscribe((res: any) => {
       this.products = res;
       console.log(JSON.stringify(this.products));
+      console.log(this.products)
       this.searchProducts = this.products;
+      console.log(this.searchProducts)
     });
   }
   addToCart(product: Product) {
@@ -29,7 +31,7 @@ export class ProductListComponent implements OnInit {
 
   }
   Search() {
-    alert(this.name);
+    
     this.searchProducts = this.products.filter((res: any) => res.name.toLocaleLowerCase().includes(this.name.toLocaleLowerCase()));
 
   }

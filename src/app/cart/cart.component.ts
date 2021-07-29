@@ -3,6 +3,7 @@ import { Product } from '../product.model';
 import { CartService } from '../services/cart.service';
 import { validate } from 'json-schema';
 import { Router } from '@angular/router';
+import { RegisterService } from '../services/register.service'
 
 
 @Component({
@@ -13,29 +14,29 @@ import { Router } from '@angular/router';
 export class CartComponent implements OnInit {
   items: Product[] = []
   total: number = 0;
-  userDetails: any
   id: any;
   orderitems: any
+  newUserId: any
+  user: any
 
 
 
-  constructor(private cartService: CartService, private router: Router) { }
+
+
+  constructor(private cartService: CartService, private router: Router, private service: RegisterService) { }
 
   ngOnInit(): void {
 
     this.items = this.cartService.getCartData();
     console.log(this.items)
     if (this.items) this.getTotal(this.items);
-    this.cartService.getAllUsers().subscribe((res: any) => {
-      this.userDetails = res;
-      console.log(this.userDetails)
-      const newUser = this.userDetails.map((newDatas: any) => {
-        this.id = newDatas._id
-        console.log(this.id)
-      })
-    });
 
+    this.user = JSON.parse(localStorage.getItem("LOGGED_IN_USER") || '{}');
+    console.log(this.user)
+    this.newUserId = this.user._id
+    console.log(this.user._id)
   }
+
 
 
 
@@ -72,45 +73,6 @@ export class CartComponent implements OnInit {
     // console.log(subs)
   }
 
-
-
-
-
-  // addOrder() {
-  //   let data
-  //   let newItems
-  //   for (let i = 0; i < this.items.length; i++) {
-  //     data = this.items[i];
-  //     console.log(data)
-  //     const {_id, ...updatedObject} = data;
-  // this.cartService.addOrders(updatedObject).subscribe(res => {
-  //   console.log(res)
-  //     }, err => {
-  //       console.log(err.message)
-  //     });
-
-  //     // console.log(data)
-
-
-  //   addOrder() {
-  // const data: Product[] = this.items
-  // const newData = data.map((user) => {
-  //       return Object.assign(user, { total: this.total }, { status: "ORDERED" },{userId:this.id})
-  //     });
-  //     console.log(newData)
-  //     const newColumns = newData.map( item => {
-  //       const { _id: value, ...rest } = item;
-  //       return { value, ...rest }
-  //      }
-  //     );
-
-  //     console.log( newColumns );
-  //     const allMeals = Object.assign({}, newColumns);
-  //     this.cartService.addOrders(allMeals).subscribe(res => {
-  //       this.router.navigateByUrl('orders')
-  //   })
-  // }
-
   addOrder() {
     const data: Product[] = this.items
     const newData = data.map((user) => {
@@ -125,7 +87,7 @@ export class CartComponent implements OnInit {
     var newArrayDataOfOjbect = Object.values(newData)
     console.log(newArrayDataOfOjbect)
 
-    const allOrders = Object.assign([newArrayDataOfOjbect], { total: this.total }, { status: "ORDERED" }, { userId: this.id }, { orderedDate: new Date })
+    const allOrders = Object.assign([newArrayDataOfOjbect], { total: this.total }, { status: "ORDERED" }, { userId: this.newUserId }, { orderedDate: new Date })
     allOrders.splice(0, allOrders.length)
     const allMeals = Object.assign({}, allOrders);
     const allOrderedItems = Object.assign(allMeals, { orderitems: newArrayDataOfOjbect })

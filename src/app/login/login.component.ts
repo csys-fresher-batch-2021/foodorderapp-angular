@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   username: any
   password: any
   logindetails: any
-
+  newUserId:any
   ngOnInit(): void {
 
   }
@@ -25,8 +25,8 @@ export class LoginComponent implements OnInit {
       let user:any = res;
       this.logindetails = res;
       localStorage.setItem("LOGGED_IN_USER", JSON.stringify(user));
-      
-      console.log(user._id)
+       this.newUserId = user._id 
+       console.log(this.newUserId)
       if(user.role ==="admin"){
         this.route.navigateByUrl('home')
       }else{

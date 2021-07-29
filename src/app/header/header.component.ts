@@ -16,5 +16,9 @@ export class HeaderComponent implements OnInit {
       this.itemInCart = d.length;
     })
   }
+  logout(){
+    localStorage.clear(); 
+  }
+  
 
 }

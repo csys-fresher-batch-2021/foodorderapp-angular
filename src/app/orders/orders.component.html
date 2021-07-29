@@ -10,7 +10,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let order of orders;let i =index">
+        <tr *ngFor="let order of details;let i =index">
             <td>{{i+1}}</td>
             <td>
                 <ul>
@@ -22,10 +22,10 @@
 
             <td>Rs.{{order.total}}</td>
             <td>{{order.status}}</td>
-            <td>
-                <button type="submit" class="btn btn-danger" *ngIf="order.status=='ORDERED'">cancel the order</button>
+            <!-- <td>
+                <button type="submit"   class="btn btn-danger" *ngIf="order.status=='ORDERED'" (click)="cancel()" >cancel the order</button>
 
-            </td>
+            </td> -->
         </tr>
     </tbody>
 </table>
