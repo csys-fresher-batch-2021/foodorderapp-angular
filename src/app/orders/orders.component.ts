@@ -15,10 +15,12 @@ export class OrdersComponent implements OnInit {
   ordered: any
   User: any
   details: any
+  Body: any
 
 
 
-  constructor(private OrderService: OrderService, private service: RegisterService,private route : ActivatedRoute) { }
+
+  constructor(private OrderService: OrderService, private service: RegisterService, private route: ActivatedRoute) { }
 
 
 
@@ -34,7 +36,16 @@ export class OrdersComponent implements OnInit {
 
     this.OrderService.getOrdersById(this.userID).subscribe((res: any) => {
       this.details = res;
-      console.log(this.details._id)
+      console.log(this.details)
+
+
+      for (let i = 0; i < this.details.length; i++) {
+        this.details._id = this.details[i]._id
+      }
+      for (let i = 0; i < this.details.length; i++) {
+        this.details._rev = this.details[i]._rev
+      }
+
 
     });
 
@@ -42,14 +53,18 @@ export class OrdersComponent implements OnInit {
   }
 
 
-  // cancel() {
-    
-  //   this.OrderService.updateMyOrders(this.route.snapshot.params.id).subscribe( (res:any) =>{
-  //     this.items = res;
-  //    console.log(this.items)
+  cancel() {
+    let newObj = this.details.filter((ele: any) => {
+      ele.status = "CANCELLED";
+    });
+    console.log(newObj)
 
-  //   });
+    this.OrderService.updateMyOrders(this.details._id, this.details._rev, this.details).subscribe((res: any) => {
+      this.items = res;
+      console.log(this.items)
 
-  // }
+    });
+
+  }
 
 }

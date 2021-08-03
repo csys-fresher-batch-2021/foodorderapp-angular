@@ -23,10 +23,10 @@ export class OrderService {
     return this.http.get(url);
   }
   
- updateMyOrders(id:any){
-   console.log(id)
-  let url = `${this.API_URL}/v1/orders/${id}` ;
-  return this.http.put(url, id);
+ updateMyOrders(id:any,rev:any,body:any){
+   console.log(body)
+  let url = `${this.API_URL}/v1/orders/${id}?rev=${rev}` ;
+  return this.http.patch(url,body);
  }
 
 

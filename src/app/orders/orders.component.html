@@ -1,3 +1,4 @@
+<app-header></app-header>
 <h1 class="display-4">My Orders</h1>
 
 <table class="table table-striped">
@@ -22,10 +23,10 @@
 
             <td>Rs.{{order.total}}</td>
             <td>{{order.status}}</td>
-            <!-- <td>
+            <td>
                 <button type="submit"   class="btn btn-danger" *ngIf="order.status=='ORDERED'" (click)="cancel()" >cancel the order</button>
 
-            </td> -->
+            </td>
         </tr>
     </tbody>
 </table>

@@ -18,7 +18,7 @@ export class CartComponent implements OnInit {
   orderitems: any
   newUserId: any
   user: any
-
+  settingForm: any
 
 
 
@@ -50,7 +50,7 @@ export class CartComponent implements OnInit {
 
   validateInput(event: any, i: number) {
     const qty = +event.target.value;
-    if (qty < 1) {
+    if (qty < 0) {
       event.target.value = this.items[i].qty;
       return;
     }
@@ -60,6 +60,9 @@ export class CartComponent implements OnInit {
   }
   private QtyUpdated(qty: number, i: number) {
     this.items[i].qty = qty;
+    if (qty == 0) {
+      this.items.splice(qty)
+    }
     this.cartService.setCartData(this.items)
     this.getTotal(this.items)
   }
@@ -101,3 +104,5 @@ export class CartComponent implements OnInit {
 
 
 }
+
+
